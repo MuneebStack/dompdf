@@ -22,6 +22,7 @@ class OptionsTest extends TestCase
         $this->assertEquals(1.1, $option->getFontHeightRatio());
         $this->assertFalse($option->getIsPhpEnabled());
         $this->assertFalse($option->getIsRemoteEnabled());
+        $this->assertFalse($option->getIsPdfAEnabled());
         $this->assertTrue($option->getIsJavascriptEnabled());
         $this->assertTrue($option->getIsFontSubsettingEnabled());
         $this->assertFalse($option->getDebugPng());
@@ -57,6 +58,7 @@ class OptionsTest extends TestCase
             'isPhpEnabled' => true,
             'isRemoteEnabled' => true,
             'allowedRemoteHosts' => ['w3.org'],
+            'isPdfAEnabled' => true,
             'isJavascriptEnabled' => false,
             'isHtml5ParserEnabled' => true,
             'isFontSubsettingEnabled' => false,
@@ -87,6 +89,7 @@ class OptionsTest extends TestCase
         $this->assertTrue($option->getIsPhpEnabled());
         $this->assertTrue($option->getIsRemoteEnabled());
         $this->assertEquals(['w3.org'], $option->getAllowedRemoteHosts());
+        $this->assertTrue($option->getIsPdfAEnabled());
         $this->assertFalse($option->getIsJavascriptEnabled());
         $this->assertTrue($option->getIsHtml5ParserEnabled());
         $this->assertFalse($option->getIsFontSubsettingEnabled());
@@ -126,6 +129,7 @@ class OptionsTest extends TestCase
             'is_php_enabled' => true,
             'is_remote_enabled' => true,
             'allowed_remote_hosts' => ['w3.org'],
+            'is_pdf_a_enabled' => true,
             'is_javascript_enabled' => false,
             'is_html5_parser_enabled' => true,
             'is_font_subsetting_enabled' => false,
@@ -156,6 +160,7 @@ class OptionsTest extends TestCase
         $this->assertTrue($option->getIsPhpEnabled());
         $this->assertTrue($option->getIsRemoteEnabled());
         $this->assertEquals(['w3.org'], $option->getAllowedRemoteHosts());
+        $this->assertTrue($option->getIsPdfAEnabled());
         $this->assertFalse($option->getIsJavascriptEnabled());
         $this->assertTrue($option->getIsHtml5ParserEnabled());
         $this->assertFalse($option->getIsFontSubsettingEnabled());
@@ -190,6 +195,7 @@ class OptionsTest extends TestCase
             'isPhpEnabled' => true,
             'isRemoteEnabled' => true,
             'allowedRemoteHosts' => ['w3.org'],
+            'isPdfAEnabled' => true,
             'isJavascriptEnabled' => false,
             'isHtml5ParserEnabled' => true,
             'isFontSubsettingEnabled' => false,
@@ -221,6 +227,7 @@ class OptionsTest extends TestCase
         $this->assertTrue($option->get('isPhpEnabled'));
         $this->assertTrue($option->get('isRemoteEnabled'));
         $this->assertEquals(['w3.org'], $option->get('allowedRemoteHosts'));
+        $this->assertTrue($option->get('isPdfAEnabled'));
         $this->assertFalse($option->get('isJavascriptEnabled'));
         $this->assertTrue($option->get('isHtml5ParserEnabled'));
         $this->assertFalse($option->get('isFontSubsettingEnabled'));
@@ -308,6 +315,7 @@ class OptionsTest extends TestCase
         $option->set([
             'enable_php' => true,
             'enable_remote' => true,
+            'enable_pdf_a' => true,
             'enable_javascript' => false,
             'enable_html5_parser' => true,
             'enable_font_subsetting' => false
@@ -315,6 +323,7 @@ class OptionsTest extends TestCase
 
         $this->assertTrue($option->getIsPhpEnabled());
         $this->assertTrue($option->getIsRemoteEnabled());
+        $this->assertTrue($option->getIsPdfAEnabled());
         $this->assertFalse($option->getIsJavascriptEnabled());
         $this->assertTrue($option->getIsHtml5ParserEnabled());
         $this->assertFalse($option->getIsFontSubsettingEnabled());
@@ -325,12 +334,14 @@ class OptionsTest extends TestCase
         $option = new Options();
         $option->setIsPhpEnabled(true);
         $option->setIsRemoteEnabled(true);
+        $option->setIsPdfAEnabled(true);
         $option->setIsJavascriptEnabled(false);
         $option->setIsHtml5ParserEnabled(true);
         $option->setIsFontSubsettingEnabled(false);
 
         $this->assertTrue($option->get('enable_php'));
         $this->assertTrue($option->get('enable_remote'));
+        $this->assertTrue($option->get('enable_pdf_a'));
         $this->assertFalse($option->get('enable_javascript'));
         $this->assertTrue($option->get('enable_html5_parser'));
         $this->assertFalse($option->get('enable_font_subsetting'));
